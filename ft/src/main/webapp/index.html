@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="us">
+<head>
+<meta charset="utf-8">
+<title>Manvendra-Finance Tracking App</title>
+<link rel="stylesheet" type="text/css" media="all" href="css/myStyle.css">
+<link rel="stylesheet" type="text/css" media="all" href="jquery/jquery-ui.css">
+<link rel="stylesheet" type="text/css" media="all" href="css/jquery.dataTables.min.css">
+
+</head>
+<body>
+	<div id="header">
+		<h1>&nbsp;</h1>
+		<label>&nbsp;</label>
+	</div>
+	<hr>
+	<br>
+	<div style="color: white;">
+		<label class="leftLable">Check expenses From &nbsp;<input type="text" size="8" readonly="readonly" id="fromDate" /> to &nbsp;<input
+			type="text" size="8" readonly="readonly" id="toDate" /></label> &nbsp;&nbsp; <span id="getExpenseButton"
+			onclick="javascript:MftController.getExpenseForPeriod()">get Expenses for this period</span> <br>
+	</div>
+	<br>
+	<div id="tabs">
+		<ul>
+			<li><a href="#tab-expense">Expense Details</a></li>
+			<li><a href="#tab-Participants">Group Details</a></li>
+			<li><a href="#tab-graphs">Graphical View</a></li>
+		</ul>
+		<div id="tab-Participants">
+			<h2>Participants</h2>
+			UNDER CONSTRUCTION
+			<!--  <label class="addParticipantLabel">Add Participant</label>-->
+		</div>
+		<div id="tab-expense">
+			<label class="leftCaption">Expenses</label> <label class="addExpenseLabel">Add More Expense</label>
+			<div id="expenseDetailsDiv"></div>
+			<label style="padding-bottom: 10px;" class="finalTallyLabel">Final Tally</label>
+
+		</div>
+		<div id="tab-graphs">
+			<h2>Expense Charts</h2>
+			<div>UNDER CONSTRUCTION</div>
+		</div>
+	</div>
+	<div id="finalTallyDialog" style="color: white; align: center; height: auto; font-size: 1.1em;" title="Final Tally">
+		<div id="finalTallyDiv" _isCreated="false"></div>
+	</div>
+	<div id="addExpenseDialog" title="Add Expense">
+		<div style="color: white;">
+			<form name="expenseForm" id="expenseForm">
+				<table _isCreated="false">
+					<tr>
+						<td><label for="expenseDate">Expense Date</label></td>
+						<td colspan="4"><input type="text" id="expenseDate" name="expenseDate" readonly="true"></td>
+					</tr>
+					<tr>
+						<td><label for="expenseDetails">Expense Details</label></td>
+						<td colspan="4"><textarea rows="2" cols="40" name="expenseDetails" id="expenseDetails" form="expenseForm">Add brief description about expense...</textarea></td>
+					</tr>
+				</table>
+				<input type="button" value="Validate Expenses" id="validateExpenseButton">
+				<input type="button" value="Save Expenses" id="saveExpenseButton" onclick="javascript:MftController.saveExpenseItem()">
+			</form>
+			<label><span class="errMsgText" id="sumWrongErrMsg"></span></label>
+		</div>
+	</div>
+	<div id="addParticipantDialog" title="Add Participant">
+		<div style="color: white;">
+			<form name="participantForm" id="participantForm">
+				<table>
+					<tr>
+						<td><label for="name">Name</label></td>
+						<td><input type="text" id="name" name="name"></td>
+					</tr>
+					<tr>
+						<td><label for="email">Email</label></td>
+						<td><input id="email" name="email" type="email" /></td>
+					</tr>
+					<tr>
+						<td><label for="phone">phone</label></td>
+						<td><input id="phone" name="email" type="phone" /></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</div>
+
+	<div class="modal">
+		
+	</div>
+
+</body>
+<script src="jquery/jquery.js"></script>
+<script src="jquery/jquery-ui.js"></script>
+<script src="js/external/jquery.dataTables.min.js"></script>
+<script src="js/external/sum.js"></script>
+<script src="js/external/jquery.maxlength.js"></script>
+
+<script src="js/external/mailcheck.min.js"></script>
+<script type="text/javascript">
+	var ExpenseData = {};
+	var require = {
+		waitSeconds : 15,
+		urlArgs : "bust=" + new Date().getTime()
+	};
+</script>
+<script data-main="js/mftBootstrap" src="js/external/require.js"></script>
+</html>
